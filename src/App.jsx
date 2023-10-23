@@ -1,23 +1,26 @@
 import React from "react"
+import { Box, CssBaseline } from "@mui/material"
+import TodoList from "./components/TodoList"
+import NavBar from "./components/NavBar"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 
 function App() {
 
   return (
     <>
-    <div className="App">
-      <nav>
-        <section>
-          <h1>Redux Fundamentals Example</h1>
-
-          <div className="navContent">
-            <div className="navLinks"></div>
-          </div>
-        </section>
-      </nav>
-      <section>
-        <h2>Welcome to the Redux Fundamentals example app!</h2>
-      </section>
-    </div>
+      <CssBaseline />
+      <header>
+        <NavBar />
+      </header>
+      <main>
+        <Box sx={{width:'33%', margin:'auto'}}>
+          <h1>Todo list</h1>
+          <Header />
+          <TodoList />
+          <Footer/>
+        </Box>
+      </main>
     </>
   )
 }

@@ -1,9 +1,8 @@
-import { createStore, compose, applyMiddleware} from "redux";
+import { createStore, applyMiddleware} from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducer";
 import delayedMessagesMiddleware from "./exampleAddOns/delayedMessagesMiddleware";
 
+const store = createStore(rootReducer)
 
-const middlewareEnhancer = applyMiddleware(delayedMessagesMiddleware)
-const store = createStore(rootReducer, middlewareEnhancer)
-
-export default store;
+export default store
