@@ -14,7 +14,7 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <Box sx={{width:'33%', margin:'auto'}}>
+        <Box sx={{width:'67%', margin:'auto'}}>
           <h1>Todo list</h1>
           <Header />
           <TodoList />

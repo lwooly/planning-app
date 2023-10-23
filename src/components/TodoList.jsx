@@ -1,24 +1,27 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import TodoItem from './TodoItem';
+import { shallowEqual } from 'react-redux';
 
 
 export default function TodoList() {
 
-    const selectTodos = state => state.todos
+    const selectTodoIds = state => {
+      console.log(state.todos)
+      console.log(typeof state.todos, 'type of')
+      return state.todos.map(todo => todo.id)
+    }
 
-    const todos = useSelector(selectTodos)
+    const todoIds = useSelector(selectTodoIds, shallowEqual)
 
+    console.log(todoIds, `todoids`)
+ 
     //loops over todos to create list items
 
-    const renderListItems = todos.map((todo) => {
-        return <TodoItem key={todo.id} todo={todo}/>
+    const renderListItems = todoIds.map((todoId) => {
+        return <TodoItem key={todoId} id={todoId}/>
     })
 
   return (

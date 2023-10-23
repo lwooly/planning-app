@@ -13,8 +13,7 @@ const initialState =
 export default function todosReducer(state = initialState, action) {
     switch (action.type) {
         case 'todos/todoAdded': {
-            //return new state object 
-            console.log(state)
+            //return new state object
             return [
                 ...state,
                 //new todo object 
@@ -45,32 +44,25 @@ export default function todosReducer(state = initialState, action) {
         }
 
         case 'todos/colorSelected': {
-            return {
-                todos: state.map((todo) => {
-                    const { todoID, color } = action.payload
-                    if (todo.id !== todoID) {
-                        return todo
-                    }
-                    return {
-                        ...todo,
-                        color
-                    }
-                })
-            }
+            console.log(`called`)
+            return state.map((todo) => {
+                const { todoId, color } = action.payload
+                if (todo.id !== todoId) {
+                    return todo
+                }
+                return {
+                    ...todo,
+                    color
+                }
+            })
+
         }
 
         case 'todos/todoDeleted': {
-            return {
-                todos: state.map((todo) => {
-                    //not id for deleted todo
-                    if (todo.id !== action.payload) {
-                        return todo;
-                    }
-                    //id of deleted todo - dont return anything
-                    return;
-                })
-            }
+            return state.filter((todo) => todo.id !== action.payload)
         }
+
+
 
         case 'todos/allCompleted': {
             return (
