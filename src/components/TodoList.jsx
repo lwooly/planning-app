@@ -4,17 +4,19 @@ import List from '@mui/material/List';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import TodoItem from './TodoItem';
 import { shallowEqual } from 'react-redux';
+import { selectFilteredTodoIds, selectTodoIds } from '../features/todosSlice';
 
 
 export default function TodoList() {
 
-    const selectTodoIds = state => {
-      console.log(state.todos)
-      console.log(typeof state.todos, 'type of')
-      return state.todos.map(todo => todo.id)
-    }
+    // const selectTodoIds = state => {
+    //   console.log(state.todos)
+    //   console.log(typeof state.todos, 'type of')
+    //   return state.todos.map(todo => todo.id)
+    // }
 
-    const todoIds = useSelector(selectTodoIds, shallowEqual)
+    // const todoIds = useSelector(selectTodoIds, shallowEqual)
+    const todoIds = useSelector(selectFilteredTodoIds)
 
     console.log(todoIds, `todoids`)
  

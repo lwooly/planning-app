@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { saveNewTodo } from '../features/todosSlice';
 
 const Header = () => {
     const [text, setText] = useState('')
@@ -12,8 +13,8 @@ const Header = () => {
     const handleKeyDown = e => {
         const trimmedText = e.target.value.trim()
         if (e.key === 'Enter' && trimmedText) {
-            //Dispatch an action to the store with this text
-            dispatch({type: 'todos/todoAdded', payload: trimmedText})
+            //dispatch thunk function with the arguments required.
+            dispatch(saveNewTodo(trimmedText))
             setText('')
         }
     }
