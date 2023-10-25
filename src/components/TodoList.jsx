@@ -5,21 +5,22 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import TodoItem from './TodoItem';
 import { shallowEqual } from 'react-redux';
 import { selectFilteredTodoIds, selectTodoIds } from '../features/todosSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 export default function TodoList() {
-
-    // const selectTodoIds = state => {
-    //   console.log(state.todos)
-    //   console.log(typeof state.todos, 'type of')
-    //   return state.todos.map(todo => todo.id)
-    // }
-
     // const todoIds = useSelector(selectTodoIds, shallowEqual)
     const todoIds = useSelector(selectFilteredTodoIds)
+    const loadingStatus = useSelector(state => state.todos.status)
 
-    console.log(todoIds, `todoids`)
- 
+    if (loadingStatus === 'loading') {
+        return (
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>
+        );
+    }
+
     //loops over todos to create list items
 
     const renderListItems = todoIds.map((todoId) => {

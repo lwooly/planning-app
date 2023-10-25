@@ -8,10 +8,7 @@ import CheckBoxTwoToneIcon from '@mui/icons-material/CheckBoxTwoTone';
 import { useDispatch, useSelector} from 'react-redux';
 import ClearIcon from '@mui/icons-material/Clear';
 import SelectComponent from './SelectComponent';
-
-const selectTodoById = (state, todoId) => {
-  return state.todos.find(todo => todo.id === todoId)
-}
+import { selectTodoById } from '../features/todosSlice';
 
 const TodoItem = ({ id }) => {
 //select todo from todo id
